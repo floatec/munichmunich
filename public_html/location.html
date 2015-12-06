@@ -1,0 +1,23 @@
+<div class="scrollable">  
+    <div class="scrollable-content">
+        
+        <div class="list-group text-center">
+            <div class="list-group-item list-group-item-home">
+                <h1> {{locationName}} </h1>
+            </div>
+            <div class="list-group-item list-group-item-home">
+                <div  ng-repeat="storyObj in stories"  id="{{storyObj.id}}" class="photoContainer" ui-swipe-left='nextPicture(storyObj.id)' ui-swipe-right='previousPicture(storyObj.id)'>
+                   <div class="photoFrame" ng-click="goToStory(storyObj.id)" style="-webkit-transform: rotate(20deg);">
+                         <div class="photo"></div>
+                        <img src="{{ storyObj.picture }}" class="img-responsive center-block" alt="..."/>
+                        
+                        <div class="title">{{storyObj.title}}</div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

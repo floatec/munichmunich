@@ -157,3 +157,38 @@ input.scrollable-header {
 
 /* own custom css */
 .angular-google-map-container { height: 500px; }
+
+.photoFrame{
+  top:0;
+  left: 0;
+  width: 300px;
+  height: 350px;
+  background: white;
+  position: absolute;
+  transition: all 0.5s ease;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.photoFrame .photo{
+  position: absolute;
+  left:20px;
+  top:20px;
+  width: 260px;
+  height: 260px;
+  background: black;
+}
+.photoFrame .title{
+  position: absolute;
+  top:280px;
+  left:20px;
+}
+.photoFrame.hide{
+  margin-left: -300px;
+  zoom: 0.9;
+  z-index: -1;
+}
+.photoContainer{
+  position: relative;
+
+}

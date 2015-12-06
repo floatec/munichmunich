@@ -1,7 +1,8 @@
 // 
 // Here is how to define your module 
 // has dependent on mobile-angular-ui
-// 
+//
+var loop=false;
 var app = angular.module('MobileAngularUiExamples', [
     'ngRoute',
     'mobile-angular-ui',
@@ -289,8 +290,13 @@ app.controller('MainController', function ($rootScope, $scope, $http, $location,
 
     }
     function getRandomDegree() {
-        var result = Math.floor(Math.random() * 70) + 1;
-        return result;
+        if(!loop) {
+            Math.random()
+            Math.random()
+            Math.random()
+            var result = Math.floor(Math.random() * 400) / 10 + 1 - 20;
+            return '-webkit-transform: rotate(' + result + 'deg);';
+        }
     }
     function goToLocation(locationName) {
         //set location
@@ -321,9 +327,26 @@ app.controller('MainController', function ($rootScope, $scope, $http, $location,
         function goToHome() {
 
             $location.path("");
+            $scope.locations = [];
+            $http.get('/story/')
+                .then(function(res){
+                    $scope.locations = res.data;
+                    initializeMarkers()
+
+                });
+
         }
     $scope.nextPicture = function(id) {
-        alert('Swiped ' + id);
+       if($scope.stories.length>1) {
+           $scope.stories.splice(1)
+       }else{
+           $http.get('/story/')
+               .then(function(res){
+                   $scope.locations = res.data;
+                   $scope.stories = $scope.locations[$scope.locationName];
+               });
+
+       }
     };
     
     $scope.previousPicture = function(id) {

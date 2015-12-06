@@ -33,12 +33,13 @@ $app->get('/story/', function () {
     {
         $db = getDB();
 
-        $sth = $db->prepare("SELECT place FROM pictures GROUP By place");
+        $sth = $db->prepare("SELECT place FROM pictures WHERE active=1 GROUP By place  ");
         $sth->execute();
 
 
         $locations=[];
         $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+        //print_r($results);
         foreach($results as $row) {
             $sth = $db->prepare("SELECT id,title,story,picture,type FROM pictures WHERE place=:place AND active=1");
             $sth->bindValue(':place', $row['place']);

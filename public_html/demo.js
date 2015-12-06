@@ -236,35 +236,13 @@ app.controller('MainController', function ($rootScope, $scope, $http, $location,
     ///// own stuff
     $scope.map = {center: {latitude: 48.136, longitude: 11.5745}, zoom: 12};
     $scope.markers = [];
-    $scope.locations = [
-        {"Marienplatz": [{
-                    id: "1",
-                    name: "Marienplatz",
-                    title: "Einst war hier eine Munitionsfabrik",
-                    story: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at mollis magna. Nam gravida urna non erat pretium, ut pulvinar lacus auctor. Sed nec orci libero. Nulla ut maximus urna. Sed tristique massa blandit orci commodo, vitae bibendum nunc molestie. Etiam non est in tortor dignissim varius eget ac sem. Sed ante ligula, imperdiet eget turpis vitae, varius sodales dolor. Quisque laoreet leo libero, sed aliquet ligula suscipit vitae. Nunc id dapibus sapien. Donec ac orci et lectus ullamcorper vehicula sit amet at leo. Cras ac eros volutpat, lobortis elit nec, interdum nulla. Quisque tortor urna, tristique eget sagittis sit amet, volutpat at elit. Aenean eu ex vel nisl posuere dictum. Suspendisse potenti. Donec euismod massa at enim tincidunt, sit amet pellentesque leo fringilla.\r\n\r\nDonec laoreet justo purus, vitae dignissim ex finibus quis. Ut fringilla ligula suscipit, ultrices mi accumsan, dignissim magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc ut justo interdum, iaculis nulla a, congue ipsum. Etiam quam nulla, dictum vitae purus id, eleifend pharetra velit. Pellentesque gravida tristique tincidunt. Nam eget nisl non augue mattis varius. Phasellus sagittis accumsan justo a pretium. Aliquam mollis nibh et massa congue, quis imperdiet nunc hendrerit. Praesent a ante nec velit vestibulum lacinia eget eget felis. Nulla luctus magna nec dapibus elementum. Vivamus ullamcorper libero eget tortor consequat, ac pharetra justo tempus. Mauris maximus vitae erat non sodales. Cras eu euismod dui, et viverra diam. Sed sagittis nisi sed quam tincidunt pharetra.\r\n\r\nSuspendisse dapibus ligula et est pharetra, in vestibulum urna vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam nec leo faucibus, fermentum lorem ac, ultricies libero. Maecenas posuere enim elementum venenatis egestas. Quisque faucibus felis nec lacus mollis molestie. Phasellus at nulla auctor, volutpat ipsum eu, blandit elit. Nam at sapien eget urna sollicitudin molestie quis eu nulla. Integer feugiat rhoncus quam quis vestibulum. Proin molestie urna ex, semper pulvinar mi venenatis a. Duis maximus malesuada porta. Nam interdum bibendum massa, eu tincidunt risus molestie et. Donec quis diam fringilla, varius sapien a, fringilla dolor. Integer et libero in risus efficitur vehicula ac id lectus. Integer rhoncus fermentum purus at porttitor. Ut sapien dui, commodo ut est sed, dictum condimentum dui. Sed massa ipsum, maximus non malesuada sed, mattis sed mauris.\r\n\r\nNullam eget lacus ut neque venenatis elementum. Integer eget posuere tellus, interdum porta magna. Proin tortor arcu, egestas quis ornare eu, fringilla at eros. Sed gravida pulvinar sodales. Sed tincidunt consequat volutpat. Aenean nec sem ac felis ornare facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\r\n\r\nNulla condimentum ultrices eros, vitae rutrum purus iaculis eget. Ut accumsan molestie velit, ac vulputate quam dignissim vitae. Sed condimentum, nunc quis euismod vehicula, mi eros porttitor nulla, at rhoncus dui est at justo. Nullam at quam eget elit fringilla convallis. Morbi et gravida sem. Ut tristique enim ac facilisis dapibus. Aenean bibendum, purus eu porta imperdiet, lacus elit rutrum elit, vel elementum neque nulla non elit. Fusce ullamcorper in neque vitae euismod. Vivamus ligula massa, ultrices vel gravida vitae, elementum in lectus.",
-                    picture: "http:\/\/www.baupedia.de\/wordpress\/wp-content\/uploads\/2011\/12\/Medienbr%C3%BCcke-M%C3%BCnchen-.-Nord-Westseite-.-Eingang-Media-Works-Munich-.-Rosenheimer-Stra%C3%9Fe-145.jpg"
-                }, {
-                    id: "2",
-                    name: "Marienplatz2",
-                    title: "Test eins zwei drei",
-                    story: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at mollis magna. Nam gravida urna non erat pretium, ut pulvinar lacus auctor. Sed nec orci libero. Nulla ut maximus urna. Sed tristique massa blandit orci commodo, vitae bibendum nunc molestie. Etiam non est in tortor dignissim varius eget ac sem. Sed ante ligula, imperdiet eget turpis vitae, varius sodales dolor. Quisque laoreet leo libero, sed aliquet ligula suscipit vitae. Nunc id dapibus sapien. Donec ac orci et lectus ullamcorper vehicula sit amet at leo. Cras ac eros volutpat, lobortis elit nec, interdum nulla. Quisque tortor urna, tristique eget sagittis sit amet, volutpat at elit. Aenean eu ex vel nisl posuere dictum. Suspendisse potenti. Donec euismod massa at enim tincidunt, sit amet pellentesque leo fringilla.\r\n\r\nDonec laoreet justo purus, vitae dignissim ex finibus quis. Ut fringilla ligula suscipit, ultrices mi accumsan, dignissim magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc ut justo interdum, iaculis nulla a, congue ipsum. Etiam quam nulla, dictum vitae purus id, eleifend pharetra velit. Pellentesque gravida tristique tincidunt. Nam eget nisl non augue mattis varius. Phasellus sagittis accumsan justo a pretium. Aliquam mollis nibh et massa congue, quis imperdiet nunc hendrerit. Praesent a ante nec velit vestibulum lacinia eget eget felis. Nulla luctus magna nec dapibus elementum. Vivamus ullamcorper libero eget tortor consequat, ac pharetra justo tempus. Mauris maximus vitae erat non sodales. Cras eu euismod dui, et viverra diam. Sed sagittis nisi sed quam tincidunt pharetra.\r\n\r\nSuspendisse dapibus ligula et est pharetra, in vestibulum urna vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam nec leo faucibus, fermentum lorem ac, ultricies libero. Maecenas posuere enim elementum venenatis egestas. Quisque faucibus felis nec lacus mollis molestie. Phasellus at nulla auctor, volutpat ipsum eu, blandit elit. Nam at sapien eget urna sollicitudin molestie quis eu nulla. Integer feugiat rhoncus quam quis vestibulum. Proin molestie urna ex, semper pulvinar mi venenatis a. Duis maximus malesuada porta. Nam interdum bibendum massa, eu tincidunt risus molestie et. Donec quis diam fringilla, varius sapien a, fringilla dolor. Integer et libero in risus efficitur vehicula ac id lectus. Integer rhoncus fermentum purus at porttitor. Ut sapien dui, commodo ut est sed, dictum condimentum dui. Sed massa ipsum, maximus non malesuada sed, mattis sed mauris.\r\n\r\nNullam eget lacus ut neque venenatis elementum. Integer eget posuere tellus, interdum porta magna. Proin tortor arcu, egestas quis ornare eu, fringilla at eros. Sed gravida pulvinar sodales. Sed tincidunt consequat volutpat. Aenean nec sem ac felis ornare facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\r\n\r\nNulla condimentum ultrices eros, vitae rutrum purus iaculis eget. Ut accumsan molestie velit, ac vulputate quam dignissim vitae. Sed condimentum, nunc quis euismod vehicula, mi eros porttitor nulla, at rhoncus dui est at justo. Nullam at quam eget elit fringilla convallis. Morbi et gravida sem. Ut tristique enim ac facilisis dapibus. Aenean bibendum, purus eu porta imperdiet, lacus elit rutrum elit, vel elementum neque nulla non elit. Fusce ullamcorper in neque vitae euismod. Vivamus ligula massa, ultrices vel gravida vitae, elementum in lectus.",
-                    picture: "http:\/\/www.baupedia.de\/wordpress\/wp-content\/uploads\/2011\/12\/Medienbr%C3%BCcke-M%C3%BCnchen-.-Nord-Westseite-.-Eingang-Media-Works-Munich-.-Rosenheimer-Stra%C3%9Fe-145.jpg"
-                }]}
-        , {"Marienplatz2": [{
-                    id: "1",
-                    name: "Marienplatz",
-                    title: "Einst war hier eine Munitionsfabrik",
-                    story: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at mollis magna. Nam gravida urna non erat pretium, ut pulvinar lacus auctor. Sed nec orci libero. Nulla ut maximus urna. Sed tristique massa blandit orci commodo, vitae bibendum nunc molestie. Etiam non est in tortor dignissim varius eget ac sem. Sed ante ligula, imperdiet eget turpis vitae, varius sodales dolor. Quisque laoreet leo libero, sed aliquet ligula suscipit vitae. Nunc id dapibus sapien. Donec ac orci et lectus ullamcorper vehicula sit amet at leo. Cras ac eros volutpat, lobortis elit nec, interdum nulla. Quisque tortor urna, tristique eget sagittis sit amet, volutpat at elit. Aenean eu ex vel nisl posuere dictum. Suspendisse potenti. Donec euismod massa at enim tincidunt, sit amet pellentesque leo fringilla.\r\n\r\nDonec laoreet justo purus, vitae dignissim ex finibus quis. Ut fringilla ligula suscipit, ultrices mi accumsan, dignissim magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc ut justo interdum, iaculis nulla a, congue ipsum. Etiam quam nulla, dictum vitae purus id, eleifend pharetra velit. Pellentesque gravida tristique tincidunt. Nam eget nisl non augue mattis varius. Phasellus sagittis accumsan justo a pretium. Aliquam mollis nibh et massa congue, quis imperdiet nunc hendrerit. Praesent a ante nec velit vestibulum lacinia eget eget felis. Nulla luctus magna nec dapibus elementum. Vivamus ullamcorper libero eget tortor consequat, ac pharetra justo tempus. Mauris maximus vitae erat non sodales. Cras eu euismod dui, et viverra diam. Sed sagittis nisi sed quam tincidunt pharetra.\r\n\r\nSuspendisse dapibus ligula et est pharetra, in vestibulum urna vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam nec leo faucibus, fermentum lorem ac, ultricies libero. Maecenas posuere enim elementum venenatis egestas. Quisque faucibus felis nec lacus mollis molestie. Phasellus at nulla auctor, volutpat ipsum eu, blandit elit. Nam at sapien eget urna sollicitudin molestie quis eu nulla. Integer feugiat rhoncus quam quis vestibulum. Proin molestie urna ex, semper pulvinar mi venenatis a. Duis maximus malesuada porta. Nam interdum bibendum massa, eu tincidunt risus molestie et. Donec quis diam fringilla, varius sapien a, fringilla dolor. Integer et libero in risus efficitur vehicula ac id lectus. Integer rhoncus fermentum purus at porttitor. Ut sapien dui, commodo ut est sed, dictum condimentum dui. Sed massa ipsum, maximus non malesuada sed, mattis sed mauris.\r\n\r\nNullam eget lacus ut neque venenatis elementum. Integer eget posuere tellus, interdum porta magna. Proin tortor arcu, egestas quis ornare eu, fringilla at eros. Sed gravida pulvinar sodales. Sed tincidunt consequat volutpat. Aenean nec sem ac felis ornare facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\r\n\r\nNulla condimentum ultrices eros, vitae rutrum purus iaculis eget. Ut accumsan molestie velit, ac vulputate quam dignissim vitae. Sed condimentum, nunc quis euismod vehicula, mi eros porttitor nulla, at rhoncus dui est at justo. Nullam at quam eget elit fringilla convallis. Morbi et gravida sem. Ut tristique enim ac facilisis dapibus. Aenean bibendum, purus eu porta imperdiet, lacus elit rutrum elit, vel elementum neque nulla non elit. Fusce ullamcorper in neque vitae euismod. Vivamus ligula massa, ultrices vel gravida vitae, elementum in lectus.",
-                    picture: "http:\/\/www.baupedia.de\/wordpress\/wp-content\/uploads\/2011\/12\/Medienbr%C3%BCcke-M%C3%BCnchen-.-Nord-Westseite-.-Eingang-Media-Works-Munich-.-Rosenheimer-Stra%C3%9Fe-145.jpg"
-                }, {
-                    id: "2",
-                    name: "Marienplatz2",
-                    title: "Test eins zwei drei",
-                    story: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at mollis magna. Nam gravida urna non erat pretium, ut pulvinar lacus auctor. Sed nec orci libero. Nulla ut maximus urna. Sed tristique massa blandit orci commodo, vitae bibendum nunc molestie. Etiam non est in tortor dignissim varius eget ac sem. Sed ante ligula, imperdiet eget turpis vitae, varius sodales dolor. Quisque laoreet leo libero, sed aliquet ligula suscipit vitae. Nunc id dapibus sapien. Donec ac orci et lectus ullamcorper vehicula sit amet at leo. Cras ac eros volutpat, lobortis elit nec, interdum nulla. Quisque tortor urna, tristique eget sagittis sit amet, volutpat at elit. Aenean eu ex vel nisl posuere dictum. Suspendisse potenti. Donec euismod massa at enim tincidunt, sit amet pellentesque leo fringilla.\r\n\r\nDonec laoreet justo purus, vitae dignissim ex finibus quis. Ut fringilla ligula suscipit, ultrices mi accumsan, dignissim magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc ut justo interdum, iaculis nulla a, congue ipsum. Etiam quam nulla, dictum vitae purus id, eleifend pharetra velit. Pellentesque gravida tristique tincidunt. Nam eget nisl non augue mattis varius. Phasellus sagittis accumsan justo a pretium. Aliquam mollis nibh et massa congue, quis imperdiet nunc hendrerit. Praesent a ante nec velit vestibulum lacinia eget eget felis. Nulla luctus magna nec dapibus elementum. Vivamus ullamcorper libero eget tortor consequat, ac pharetra justo tempus. Mauris maximus vitae erat non sodales. Cras eu euismod dui, et viverra diam. Sed sagittis nisi sed quam tincidunt pharetra.\r\n\r\nSuspendisse dapibus ligula et est pharetra, in vestibulum urna vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam nec leo faucibus, fermentum lorem ac, ultricies libero. Maecenas posuere enim elementum venenatis egestas. Quisque faucibus felis nec lacus mollis molestie. Phasellus at nulla auctor, volutpat ipsum eu, blandit elit. Nam at sapien eget urna sollicitudin molestie quis eu nulla. Integer feugiat rhoncus quam quis vestibulum. Proin molestie urna ex, semper pulvinar mi venenatis a. Duis maximus malesuada porta. Nam interdum bibendum massa, eu tincidunt risus molestie et. Donec quis diam fringilla, varius sapien a, fringilla dolor. Integer et libero in risus efficitur vehicula ac id lectus. Integer rhoncus fermentum purus at porttitor. Ut sapien dui, commodo ut est sed, dictum condimentum dui. Sed massa ipsum, maximus non malesuada sed, mattis sed mauris.\r\n\r\nNullam eget lacus ut neque venenatis elementum. Integer eget posuere tellus, interdum porta magna. Proin tortor arcu, egestas quis ornare eu, fringilla at eros. Sed gravida pulvinar sodales. Sed tincidunt consequat volutpat. Aenean nec sem ac felis ornare facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\r\n\r\nNulla condimentum ultrices eros, vitae rutrum purus iaculis eget. Ut accumsan molestie velit, ac vulputate quam dignissim vitae. Sed condimentum, nunc quis euismod vehicula, mi eros porttitor nulla, at rhoncus dui est at justo. Nullam at quam eget elit fringilla convallis. Morbi et gravida sem. Ut tristique enim ac facilisis dapibus. Aenean bibendum, purus eu porta imperdiet, lacus elit rutrum elit, vel elementum neque nulla non elit. Fusce ullamcorper in neque vitae euismod. Vivamus ligula massa, ultrices vel gravida vitae, elementum in lectus.",
-                    picture: "http:\/\/www.baupedia.de\/wordpress\/wp-content\/uploads\/2011\/12\/Medienbr%C3%BCcke-M%C3%BCnchen-.-Nord-Westseite-.-Eingang-Media-Works-Munich-.-Rosenheimer-Stra%C3%9Fe-145.jpg"
+    $scope.locations = [];
+        $http.get('/story/')
+            .then(function(res){
+                $scope.locations = res.data;
+                initializeMarkers()
 
-                }]}];
-
+            });
     $scope.stories = [];
     $scope.locationName = "";
     $scope.story = {};
@@ -277,46 +255,38 @@ app.controller('MainController', function ($rootScope, $scope, $http, $location,
 
     initializeMarkers();
     function initializeMarkers() {
-        var marker1 = {
-            id: 0,
-            coords: {
-                latitude: 48.136,
-                longitude: 11.5745
-            },
-            options: {},
-            events: {
-                click: function () {
-                    $scope.locations = goToLocation("Marienplatz");
-                }
-            }
-        };
-        var marker2 = {
-            id: 1,
-            coords: {
-                latitude: 48.146,
-                longitude: 11.5745
-            },
-            options: {},
-            events: {
-                click: function () {
-                    alert('hello');
-                }
-            }
-        };
-//        $http.jsonp("http://maps.googleapis.com/maps/api/geocode/json?address=Marienplatz&sensor=false").
-//                success(function (data, status) {
-//                    alert(data);
-//                    var p = data.results[0].geometry.location;
-//                    alert(p);
-//                    marker1.coords.latitude = p.lat;
-//                    marker1.coords.longitude = p.lng;
-//
-//                }).
-//                error(function (data, status) {
-//                    console.log(data || "Request failed");
-//                });
-        $scope.markers.push(marker1);
-        $scope.markers.push(marker2);
+
+
+
+        angular.forEach($scope.locations, function (value, key) {
+                var marker1 = {
+                    id: 0,
+                    coords: {
+                        latitude: 48.136,
+                        longitude: 11.5745
+                    },
+                    options: {},
+                    events: {
+                        click: function () {
+                            $scope.locationName = key;
+                            $scope.locations = goToLocation(key);
+
+                        }
+                    }
+                };
+                $http.get('http://maps.google.com/maps/api/geocode/json?address='+key+'&sensor=false').success(function(data) {
+                    console.log(key)
+                    var p = data.results[0].geometry.location;
+                   // alert(p.lat);
+                    marker1.coords.latitude = p.lat;
+                    marker1.coords.longitude = p.lng;
+                    $scope.markers.push(marker1);
+                    console.log($scope.markers)
+                });
+
+        });
+
+
     }
     function getRandomDegree() {
         var result = Math.floor(Math.random() * 70) + 1;
@@ -329,6 +299,7 @@ app.controller('MainController', function ($rootScope, $scope, $http, $location,
                 $scope.stories = value[locationName];
             }
         });
+        $scope.stories = $scope.locations[locationName];
         console.log($scope.stories);
         $scope.locationName = locationName;
         $location.path("location");

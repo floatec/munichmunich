@@ -40,7 +40,7 @@ $app->get('/story/', function () {
         $locations=[];
         $results = $sth->fetchAll(PDO::FETCH_ASSOC);
         foreach($results as $row) {
-            $sth = $db->prepare("SELECT id,title,story,picture,type FROM pictures WHERE place=:place");
+            $sth = $db->prepare("SELECT id,title,story,picture,type FROM pictures WHERE place=:place AND active=1");
             $sth->bindValue(':place', $row['place']);
             $sth->execute();
             $locations[$row['place']]=$sth->fetchAll(PDO::FETCH_ASSOC);
@@ -60,6 +60,64 @@ $app->get('/story/', function () {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
 });
+
+$app->get('/story/all', function () {
+
+    $app = \Slim\Slim::getInstance();
+
+    try
+    {
+        $db = getDB();
+
+        $sth = $db->prepare("SELECT id,title,story,picture,type,place,active FROM pictures GROUP By place");
+        $sth->execute();
+
+
+
+        $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+
+        if($results) {
+            $app->response->setStatus(200);
+            $app->response()->headers->set('Content-Type', 'application/json');
+            echo json_encode($results);
+            $db = null;
+        } else {
+            throw new PDOException('No records found.');
+        }
+
+    } catch(PDOException $e) {
+        $app->response()->setStatus(404);
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+});
+$app->get('/comments/all', function () {
+
+    $app = \Slim\Slim::getInstance();
+
+    try
+    {
+        $db = getDB();
+
+        $sth = $db->prepare("SELECT id,name,story,picture FROM comments");
+
+        $sth->execute();
+        $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        if($results) {
+            $app->response->setStatus(200);
+            $app->response()->headers->set('Content-Type', 'application/json');
+            echo json_encode($results);
+            $db = null;
+        } else {
+            throw new PDOException('No records found.');
+        }
+
+    } catch(PDOException $e) {
+        $app->response()->setStatus(404);
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+});
 $app->get('/comments/:id', function ($id) {
 
     $app = \Slim\Slim::getInstance();
@@ -68,7 +126,7 @@ $app->get('/comments/:id', function ($id) {
     {
         $db = getDB();
 
-        $sth = $db->prepare("SELECT id,name,story,picture FROM comments WHERE picture_id=:id");
+        $sth = $db->prepare("SELECT id,name,story,picture FROM comments WHERE picture_id=:id AND active=1");
         $sth->bindValue(':id', $id);
         $sth->execute();
         $results = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -96,9 +154,55 @@ $app->post('/comments/', function () {
     print_r($input->picture_id);
     $sth = $db->prepare("INSERT INTO `munichmunich`.`comments` (`id`, `picture_id`, `name`, `story`, `picture`, `active`) VALUES (NULL, :picture_id, :name, :story, :picture, '0');");
     $sth->bindValue(':picture_id', $input->picture_id);
-    $sth->bindValue(':story', $input->story);
-    $sth->bindValue(':name', $input->name);
+    $sth->bindValue(':story', htmlspecialchars($input->story));
+    $sth->bindValue(':name', htmlspecialchars($input->name));
     $sth->bindValue(':picture', $input->picture);
     $sth->execute();
 });
+
+$app->post('/story/', function () {
+    if (!isset($_FILES['upload'])) {
+        echo "No files uploaded!!";
+        return;
+    }
+
+    $imgs = array();
+
+    $files = $_FILES['upload'];
+
+    $cnt = count($files['name']);
+
+
+            $name = uniqid('img-'.date('Ymd').'-');
+
+            if (move_uploaded_file($files['tmp_name'], 'uploads/' . $name) === true) {
+                $imgs = array('url' => '/uploads/' . $name, 'name' => $files['name']);
+            }
+
+
+
+    $app = \Slim\Slim::getInstance();
+    $request = $app->request();
+    $db = getDB();
+    $body = $request->getBody();
+    $input = json_decode($body);
+    print_r($body);
+    $sth = $db->prepare("INSERT INTO `munichmunich`.`pictures` (`id`, `picture`, `title`, `story`, `place`, `active`) VALUES (NULL, :picture, :title, :story,:location, '0');");
+    $sth->bindValue(':picture', $imgs['url']);
+    $sth->bindValue(':story', htmlspecialchars($app->request->post('story')));
+    $sth->bindValue(':title', htmlspecialchars($app->request->post('title')));
+    $sth->bindValue(':location', $app->request->post('location'));
+    $sth->execute();
+    $app->redirect($_SERVER["HTTP_REFERER"]);
+});
+$app->get('/story/:id/activate/:active', function ($id,$active) {
+    $app = \Slim\Slim::getInstance();
+    $db = getDB();
+    $sth = $db->prepare("UPDATE `munichmunich`.`pictures` SET  `active`=:active WHERE id=:id");
+    $sth->bindValue(':id', $id);
+    $sth->bindValue(':active', $active);
+    $sth->execute();
+});
+
+
 $app->run();

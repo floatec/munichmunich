@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <style>
+        body{
+            background: gray;
+            padding: 50px;
+        }
+        .photoFrame{
+            top:0;
+            left: 0;
+            width: 300px;
+            height: 350px;
+            background: white;
+            position: absolute;
+            transition: all 0.5s ease;
+        }
+        .photoFrame .photo{
+            position: absolute;
+            left:20px;
+            top:20px;
+            width: 260px;
+            height: 260px;
+            background: black;
+        }
+        .photoFrame .title{
+            position: absolute;
+            top:280px;
+            left:20px;
+        }
+        .photoFrame.hide{
+            margin-left: -300px;
+            zoom: 0.9;
+            z-index: -1;
+        }
+        .photoContainer{
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+<div class="photoContainer">
+    <div class="photoFrame" onclick="$(this).addClass('hide')" style=" -ms-transform: rotate(20deg); /* IE 9 */
+    -webkit-transform: rotate(20deg); /* Safari */
+    transform: rotate(20deg);"><div  class="photo"></div><div class="title">Title</div></div>
+    <div class="photoFrame" onclick="$(this).addClass('hide')" style=" -ms-transform: rotate(20deg); /* IE 9 */
+    -webkit-transform: rotate(-15deg); /* Safari */
+    transform: rotate(-15deg);"><div  class="photo"></div><div class="title">Title</div></div>
+        <div class="photoFrame" onclick="$(this).addClass('hide')" style=" -ms-transform: rotate(20deg); /* IE 9 */
+    -webkit-transform: rotate(5deg); /* Safari */
+    transform: rotate(5deg);"><div  class="photo"></div><div class="title">Title</div></div>
+</div>
+
+<script>
+    $("photoFrame").on("click",function(){
+        if($(this).hasClass("hide")){
+            $(this).removeClass('hide');
+        }else{
+            $(this).addClass('hide');
+        }
+
+    });
+</script>
+</body>
+</html>

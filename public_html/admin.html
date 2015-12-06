@@ -12,19 +12,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="css/admin.js" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/admin.js" >
+    <style>
+        .gray{
+            background: gray;
+        }
+    </style>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
+<a class="btn btn-success" onclick="$('#new').show()">add new story</a>
 <div id="list"><table class="table"></table></div>
-<form method="post" action="/story/" enctype="multipart/form-data">
-Title
+<form style='display:none;position: fixed;top:0%;left: 0%;right:0%;bottom:0%;overflow-y: scroll;background: white' id="new" method="post" action="/story/" enctype="multipart/form-data">
+    <a onclick='$(this).parent().hide();$(body).removeClass("gray")' class='btn btn-danger'>x</a><br>
+Title<br>
     <input name="title"><br>
-    Location
+    Location<br>
     <input name="location"><br>
-    <textarea name="story"></textarea><br>
+    Story<br>
+    <textarea name="story" rows="15" cols="80"></textarea><br>
     <input type="file" name="upload" value=""/>
     <input type="submit" value="Save">
 </form>

@@ -2,11 +2,12 @@
     <div class="scrollable-content">
 
         <div class="list-group text-center">
-            <div class="list-group-item list-group-item-home">
-                <h1> {{story.name}} </h1>
-                <img src="{{story.picture}}" class="img-responsive center-block img-circle" alt="..."></img>
+            <div class="list-group-item list-group-item-home" style="background: url({{story.picture}});height: 400px;background-size: cover;background-position: center">
+
+
             </div>
             <div class="list-group-item list-group-item-home">
+                <h1> {{story.name}} </h1>
                 {{story.story}}
             </div>
         </div>

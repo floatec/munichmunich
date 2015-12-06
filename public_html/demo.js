@@ -25,6 +25,7 @@ app.run(function ($transform) {
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'home.html', reloadOnSearch: false});
     $routeProvider.when('/location', {templateUrl: 'location.html', reloadOnSearch: false});
+    $routeProvider.when('/new', {templateUrl: 'new.html', reloadOnSearch: false});
     $routeProvider.when('/story', {templateUrl: 'story.html', reloadOnSearch: false});
 });
 // 
@@ -269,7 +270,10 @@ app.controller('MainController', function ($rootScope, $scope, $http, $location,
     $scope.story = {};
 
     $scope.goToStory = goToStory;
+        $scope.goToHome = goToHome;
+        $scope.goToNew = goToNew;
     $scope.getRandomDegree = getRandomDegree;
+
 
     initializeMarkers();
     function initializeMarkers() {
@@ -339,6 +343,14 @@ app.controller('MainController', function ($rootScope, $scope, $http, $location,
         $location.path("story");
     }
 
+        function goToNew() {
+
+            $location.path("new");
+        }
+        function goToHome() {
+
+            $location.path("");
+        }
     $scope.nextPicture = function(id) {
         alert('Swiped ' + id);
     };

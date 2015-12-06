@@ -1,0 +1,40 @@
+<div class="scrollable">  
+    <div class="scrollable-content">
+        
+        <div class="list-group text-center">
+            <form style="" id="new" method="post" action="/story/" enctype="multipart/form-data">
+                <div class="form-group has-success has-feedback">
+                    <label>Title</label>
+                    <input type="text" name="title"
+                           class="form-control"
+                           placeholder="What is your Story about?">
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label>Location</label>
+                    <input type="text" name="location"
+                           class="form-control"
+                           placeholder="Where did it happen?">
+                </div>
+
+                <div class="form-group has-success has-feedback">
+                    <label>Your Story</label>
+                    <textarea type="text" name="story" rows="8"
+                           class="form-control"
+                           placeholder="What is your Story?"></textarea>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label>Your Photo</label>
+                    <input type="file" name="upload"
+                           class="form-control"
+                           placeholder="">
+                </div>
+                <div class="form-group has-success has-feedback">
+
+                    <input type="submit" value="Send us your Story!"
+                           class="form-control">
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>

@@ -59,12 +59,12 @@
                 <div class="navbar-brand navbar-brand-center" ui-yield-to="title">
                     Munic Munic
                 </div>
-                <div class="btn-group pull-left">
+                <div class="btn-group pull-left" ng-click="goToHome()">
                     <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
                         <i class="fa fa-bars"></i> Menu
                     </div>
                 </div>
-                <div class="btn-group pull-right" ui-yield-to="navbarAction">
+                <div class="btn-group pull-right" ui-yield-to="navbarAction" ng-click="goToNew()">
                     <div ui-toggle="uiSidebarRight" class="btn">
                         <i class="fa fa-comment"></i> New Story
                     </div>
